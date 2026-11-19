@@ -1,0 +1,126 @@
+/* 用清晰的纸卡布局区分中文提示、参考答案和练习设置。 */
+:root {
+  color-scheme: light;
+  font-family: "Microsoft YaHei UI", "PingFang SC", system-ui, sans-serif;
+  font-size: 16px;
+  color: #142747;
+  background: #f2f5fb;
+  --ink: #142747;
+  --muted: #506481;
+  --blue: #2355cc;
+  --line: #dbe3f0;
+  --paper: #fff;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+[hidden] { display: none !important; }
+body { margin: 0; line-height: 1.6; }
+h1, h2, p { margin: 0; }
+input, select, textarea, button { font: inherit; }
+button, select { cursor: pointer; }
+button:disabled { cursor: default; opacity: .55; }
+:focus-visible { outline: 3px solid #4278e9; outline-offset: 3px; }
+h1:focus, h2:focus, #answer:focus, #hint-text:focus { outline: none; }
+.frame { width: min(1120px, calc(100% - 48px)); margin-inline: auto; }
+.topbar { background: var(--paper); border-bottom: 1px solid var(--line); }
+.top-inner, .brand, nav { display: flex; align-items: center; }
+.top-inner { min-height: 70px; justify-content: space-between; gap: 8px; }
+.brand { gap: 10px; white-space: nowrap; }
+.brand-mark { width: 40px; height: 40px; color: #fff; background: var(--blue); border-radius: 12px; }
+nav { gap: 5px; }
+nav button { padding: 7px 14px; border: 0; color: var(--muted); background: transparent; border-radius: 8px; font-size: .9375rem; }
+nav button:hover, nav button[aria-current] { color: #1e49aa; background: #eaf0ff; }
+.heading { padding-block: 36px 24px; }
+.heading h1 { font-size: clamp(2rem, 4.6vw, 3.25rem); line-height: 1.15; letter-spacing: -.045em; margin: 6px 0 12px; }
+.eyebrow { font-weight: 700; font-size: .875rem; letter-spacing: .11em; color: var(--blue); }
+.heading > p:last-child, .muted { color: var(--muted); }
+.practice-grid, .bank-grid { display: grid; grid-template-columns: minmax(0, 1fr) 318px; gap: 22px; align-items: start; }
+.desk { min-width: 0; }
+.progress-row { display: flex; align-items: center; gap: 14px; color: var(--muted); margin-bottom: 13px; font-size: .875rem; }
+.progress-row strong { color: var(--ink); white-space: nowrap; font-variant-numeric: tabular-nums; }
+progress { appearance: none; flex: 1; min-width: 30px; height: 7px; border: 0; border-radius: 99px; background: #dce6f8; overflow: hidden; accent-color: var(--blue); }
+progress::-webkit-progress-bar { background: #dce6f8; }
+progress::-webkit-progress-value { background: var(--blue); }
+progress::-moz-progress-bar { background: var(--blue); }
+.card, .panel { background: var(--paper); border: 1px solid var(--line); border-radius: 17px; }
+.card { padding: clamp(22px, 4vw, 42px); min-height: 415px; border-top: 4px solid #355fce; box-shadow: 0 14px 34px #203e7510; }
+#question { min-height: 326px; display: flex; flex-direction: column; align-items: start; }
+.card-top, .catalog-heading { display: flex; align-items: center; flex-wrap: wrap; gap: 10px; }
+.badge { display: inline-block; background: #eaf0ff; color: #1745aa; border-radius: 7px; padding: 4px 10px; font-size: .875rem; font-weight: 700; }
+.card-label { font-size: .875rem; font-weight: 700; color: var(--muted); }
+#question > .card-label { margin-top: 37px; }
+.card h2 { font-size: clamp(1.65rem, 3vw, 2.55rem); line-height: 1.33; margin: 6px 0 18px; overflow-wrap: anywhere; }
+#question > .actions { margin-top: auto; padding-top: 18px; }
+.answer { align-self: stretch; border-radius: 10px; border: 1px solid #c8d8fa; border-left: 4px solid var(--blue); background: #f2f6ff; padding: 13px 16px; }
+.answer > .muted { font-size: .875rem; }
+#answer { font-size: clamp(1.25rem, 3vw, 1.75rem); font-weight: 660; line-height: 1.35; margin: 5px 0; overflow-wrap: anywhere; }
+.example { margin-top: 12px; padding-top: 11px; border-top: 1px solid #c8d8fa; overflow-wrap: anywhere; }
+.example-heading { display: flex; flex-wrap: wrap; align-items: baseline; gap: 3px 10px; }
+.example h3 { margin: 0; font-size: 1rem; }
+#example-source { color: #30559c; font-size: .875rem; }
+#example-sentence { margin-block: 5px; font-size: 1.0625rem; line-height: 1.55; }
+#example-translation { font-size: .9375rem; }
+.settings details { margin-top: 12px; }
+.settings summary { cursor: pointer; color: #1a45ac; font-weight: 650; font-size: .9375rem; }
+.example-help { margin-top: 5px; font-size: .875rem; }
+.hint { color: #2349a1; margin-bottom: 8px; overflow-wrap: anywhere; }
+.actions { display: flex; flex-wrap: wrap; gap: 8px; }
+.actions button, .full, .stats button { border-radius: 9px; padding: 9px 15px; min-height: 44px; border: 1px solid transparent; font-weight: 650; font-size: .9375rem; }
+.primary { color: white; background: var(--blue); }
+.primary:hover { background: #1944ab; }
+button.secondary { color: #1a45ac; background: #f0f4ff; border-color: #cddaf7; }
+button.secondary:hover { background: #e2ebff; }
+.quiet { color: var(--muted); background: transparent; }
+.quiet:hover:not(:disabled) { color: var(--blue); background: #eef3fb; }
+.shortcuts { margin-top: 12px; color: var(--muted); font-size: .875rem; }
+.shortcuts span { margin-inline: 8px; }
+kbd { display: inline-block; font: inherit; border: 1px solid #cdd8ed; border-radius: 5px; min-width: 1.45rem; background: white; padding-inline: 4px; text-align: center; }
+.rail { display: grid; gap: 15px; }
+.panel { padding: 18px; }
+.panel h2 { font-size: 1.0625rem; }
+.settings label, .catalog-filters label { display: block; font-size: .875rem; color: var(--muted); font-weight: 600; margin: 12px 0 4px; }
+.settings :is(input, textarea, select), .catalog-filters :is(input, select) { width: 100%; min-height: 42px; border: 1px solid #cdd8eb; border-radius: 8px; background: #fafcff; padding: 8px 10px; color: var(--ink); }
+textarea { resize: vertical; }
+.setting-pair, .stat-pair { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+.full { width: 100%; margin-top: 16px; }
+.stat-pair { margin: 11px 0; }
+.stat-pair div, .result div { display: flex; flex-direction: column; gap: 0; background: #edf3ff; border-radius: 9px; padding: 7px 11px; }
+.stat-pair div:last-child, .result div:nth-child(2) { background: #fff3e8; }
+.stat-pair strong, .result strong { font-size: 1.5rem; line-height: 1.28; }
+.stat-pair span, .result span, .stats p { font-size: .875rem; color: var(--muted); }
+.stats button { margin-top: 4px; padding-inline: 0; }
+.result { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; margin-block: 20px; }
+#finished > .actions { margin-top: 18px; }
+.catalog { min-width: 0; }
+.catalog-heading { justify-content: space-between; }
+.catalog-filters { display: grid; grid-template-columns: minmax(0, 2fr) minmax(0, 1fr); gap: 10px; }
+.entries { margin-top: 18px; }
+.entries > p { padding-block: 12px; }
+.entry { padding: 13px 1px; border-top: 1px solid var(--line); overflow-wrap: anywhere; }
+.entry > div { display: flex; align-items: baseline; flex-wrap: wrap; gap: 8px; }
+.entry h3 { margin: 0; font-size: 1rem; }
+.entry > div > span { font-size: .875rem; color: var(--muted); }
+.entry ul { margin: 4px 0 0; padding-inline-start: 20px; }
+.entry li::marker { color: #4168c7; }
+.transfer p { margin: 7px 0 10px; font-size: .875rem; }
+.notice { background: #eaf1ff; border: 1px solid #c9d8f7; color: #16367d; border-radius: 9px; padding: 9px 12px; overflow-wrap: anywhere; }
+.notice.warning { background: #fff3e8; border-color: #e6c7a9; color: #743b15; }
+#storage-warning { margin-top: 14px; }
+footer { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 5px 16px; border-top: 1px solid var(--line); color: var(--muted); font-size: .875rem; margin-top: 25px; padding: 14px 0 22px; }
+
+/* 窄屏把练习放在设置前面，把添加入口放在题库清单前面。 */
+@media (max-width: 780px) {
+  .practice-grid, .bank-grid { grid-template-columns: minmax(0, 1fr); gap: 18px; }
+  .bank-grid > .rail { grid-row: 1; }
+}
+@media (max-width: 440px) {
+  .frame { width: calc(100% - 28px); }
+  .top-inner { min-height: 61px; }
+  .brand { gap: 6px; }
+  .brand-mark { width: 32px; height: 32px; }
+  nav button { padding-inline: 7px; }
+  .heading { padding-block: 26px 18px; }
+  .card { min-height: 360px; }
+  #question { min-height: 300px; }
+  #question > .card-label { margin-top: 24px; }
+}
