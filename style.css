@@ -108,6 +108,23 @@ textarea { resize: vertical; }
 #storage-warning { margin-top: 14px; }
 footer { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 5px 16px; border-top: 1px solid var(--line); color: var(--muted); font-size: .875rem; margin-top: 25px; padding: 14px 0 22px; }
 
+/* 长素材区的阅读、默写与整段回忆共用一张卡。 */
+.material-card { overflow-wrap: anywhere; }
+.material-card h2 { margin-top: 12px; }
+.material-modes { margin-bottom: 20px; }
+.material-modes button[aria-pressed="true"] { color: #fff; background: var(--blue); border-color: var(--blue); }
+.material-content > p { margin-block: 8px; }
+.material-content ol { margin-block: 10px; padding-inline-start: 23px; }
+.material-content li { margin-block: 8px; padding-inline-start: 4px; }
+.material-fragment { display: block; color: var(--ink); line-height: 1.65; margin-top: 2px; }
+.material-answer, .material-hint { margin-block: 12px; }
+.material-answer p + p { margin-top: 5px; }
+#material-english { font-size: 1.0625rem; line-height: 1.65; }
+#material-application { margin-top: 18px; border-top: 1px solid var(--line); padding-top: 12px; }
+#material-application summary { cursor: pointer; color: var(--blue); font-weight: 700; }
+#material-application p { margin-top: 6px; }
+.material-picker-actions { margin-top: 12px; }
+
 /* 窄屏把练习放在设置前面，把添加入口放在题库清单前面。 */
 @media (max-width: 780px) {
   .practice-grid, .bank-grid { grid-template-columns: minmax(0, 1fr); gap: 18px; }
@@ -115,7 +132,7 @@ footer { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 5p
 }
 @media (max-width: 440px) {
   .frame { width: calc(100% - 28px); }
-  .top-inner { min-height: 61px; }
+  .top-inner { min-height: 61px; flex-wrap: wrap; gap: 0; padding-block: 7px; }
   .brand { gap: 6px; }
   .brand-mark { width: 32px; height: 32px; }
   nav button { padding-inline: 7px; }

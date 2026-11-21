@@ -252,12 +252,12 @@ function grade(mark) {
 }
 
 function goTo(view) {
-  const practice = view === "practice";
-  show("practice", practice);
-  show("library", !practice);
-  byId(practice ? "nav-bank" : "nav-practice").removeAttribute("aria-current");
-  byId(practice ? "nav-practice" : "nav-bank").setAttribute("aria-current", "page");
-  byId(practice ? "practice-title" : "library-title").focus({ preventScroll: true });
+  for (const [section, nav] of [["practice", "nav-practice"], ["materials", "nav-materials"], ["library", "nav-bank"]]) {
+    show(section, section === view);
+    if (section === view) byId(nav).setAttribute("aria-current", "page");
+    else byId(nav).removeAttribute("aria-current");
+  }
+  byId(`${view}-title`).focus({ preventScroll: true });
   window.scrollTo(0, 0);
 }
 

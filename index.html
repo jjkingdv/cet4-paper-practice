@@ -5,10 +5,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="看中文、纸上默写、翻答案自评的四级写作练习。">
   <title>四级默写本</title>
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style.css?v=materials1">
   <script defer src="bank.js"></script>
   <script defer src="examples.js"></script>
-  <script defer src="app.js"></script>
+  <script defer src="app.js?v=materials1"></script>
+  <script defer src="materials.js"></script>
+  <script defer src="materials-practice.js"></script>
 </head>
 <body>
   <header class="topbar">
@@ -19,6 +21,7 @@
       </div>
       <nav aria-label="页面导航">
         <button id="nav-practice" type="button" aria-current="page">纸笔练习</button>
+        <button id="nav-materials" type="button">长素材背诵</button>
         <button id="nav-bank" type="button">我的题库</button>
       </nav>
     </div>
@@ -166,7 +169,74 @@
       </div>
     </section>
 
-    <footer>内置素材：梁伟《四级写作议论文模板与素材库》第 13–17 页蓝色标记。<span>题库与进度仅保存在当前浏览器。</span></footer>
+    <!-- 长素材练习沿用纸笔自评，不与短语卡混排。 -->
+    <section id="materials" aria-labelledby="materials-title" hidden>
+      <div class="heading">
+        <p class="eyebrow">四级写作 · 纸笔背诵</p>
+        <h1 id="materials-title" tabindex="-1">长素材背诵</h1>
+        <p>先理清段落怎么展开，再逐块默写，最后只看提纲写完整段。</p>
+      </div>
+      <div class="practice-grid materials-grid">
+        <article class="card material-card" aria-labelledby="material-title">
+          <div class="card-top"><span id="material-type" class="badge"></span><span id="material-source" class="muted"></span></div>
+          <h2 id="material-title" tabindex="-1"></h2>
+          <div class="material-modes actions" role="group" aria-label="背诵阶段">
+            <button class="secondary" type="button" data-material-mode="read">1 读懂素材</button>
+            <button class="secondary" type="button" data-material-mode="chunk">2 分块默写</button>
+            <button class="secondary" type="button" data-material-mode="whole">3 整段回忆</button>
+          </div>
+          <div id="material-content" class="material-content"></div>
+          <p id="material-hint" class="hint material-hint" aria-live="polite" hidden></p>
+          <section id="material-answer" class="answer material-answer" aria-label="参考答案" hidden>
+            <p class="card-label">参考答案</p>
+            <p id="material-english" lang="en"></p>
+            <p id="material-translation" class="muted"></p>
+          </section>
+          <div id="material-reveal-actions" class="actions" hidden>
+            <button id="material-reveal" class="primary" type="button">翻开答案</button>
+            <button id="material-show-hint" class="quiet" type="button">看英文开头</button>
+          </div>
+          <div id="material-chunk-actions" class="actions" hidden>
+            <button id="material-next-chunk" class="primary" type="button">下一块</button>
+          </div>
+          <div id="material-grade-actions" class="actions" hidden>
+            <button id="material-right" class="primary" type="button">写熟了</button>
+            <button id="material-wrong" class="secondary" type="button">还要复习</button>
+          </div>
+          <details id="material-application" hidden>
+            <summary>换题套用示例</summary>
+            <p id="material-topic" class="muted"></p>
+            <p id="material-use" lang="en"></p>
+          </details>
+        </article>
+        <aside class="rail" aria-label="长素材选择与进度">
+          <section class="panel settings" aria-labelledby="material-picker-title">
+            <h2 id="material-picker-title">选择素材</h2>
+            <label for="material-category">写作用途</label>
+            <select id="material-category">
+              <option value="">全部用途</option><option>建议</option><option>好处</option><option>坏处</option>
+            </select>
+            <label for="material-picker">当前素材</label>
+            <select id="material-picker"></select>
+            <div class="actions material-picker-actions">
+              <button id="material-next" class="secondary" type="button">下一篇</button>
+              <button id="material-review" class="secondary" type="button">优先复习</button>
+            </div>
+          </section>
+          <section class="panel stats" aria-labelledby="material-stats-title">
+            <h2 id="material-stats-title">长素材进度</h2>
+            <div class="stat-pair">
+              <div><strong id="material-mastered">0</strong><span>已写熟</span></div>
+              <div><strong id="material-pending">0</strong><span>待复习</span></div>
+            </div>
+            <p id="material-total" class="muted"></p>
+            <p id="material-status" role="status" class="muted"></p>
+          </section>
+        </aside>
+      </div>
+    </section>
+
+    <footer>内置短语：梁伟《四级写作议论文模板与素材库》第 13–17 页蓝色标记。<span>题库与进度仅保存在当前浏览器。</span></footer>
   </main>
 </body>
 </html>
