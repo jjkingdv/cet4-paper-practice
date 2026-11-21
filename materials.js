@@ -116,18 +116,28 @@ const materialTranslations = [
   "【活动】难以监管时，可能引发安全问题。如果没有清晰的规则或足够的工作人员，学生可能受伤，正常的校园活动也可能被打断。"
 ];
 
-// 只维护主题与原短语卡的关联，中英文直接取自原题库。
-const activityTopics = [
-  ["环境保护", "environmental protection",
-    ["校园清扫活动", "垃圾分类宣传活动", "植树活动"]],
-  ["沟通与表达", "communication skills",
-    ["读书分享会", "小组讨论", "演讲比赛", "辩论赛", "沟通技巧培训"]],
-  ["传统文化传承", "the preservation of traditional Chinese culture",
-    ["传统文化体验活动", "传统文化传承讲座", "数字文物摄影展", "非遗传承实践活动"]],
-  ["职业发展", "career development",
-    ["模拟求职大赛", "职业讲座", "就业指导讲座", "职业技能培训", "简历制作与面试培训"]],
-  ["创新与创业", "innovation and entrepreneurship",
-    ["创新创业大赛", "创业培训", "创新创业实践", "科研创新项目"]],
-  ["数字素养", "digital literacy",
-    ["数字信息辨别讲座", "短视频创作大赛", "数字素养培训", "新媒体运营培训"]]
-];
+// 只有讲义中明确要求列举三例的素材才配固定练习；短语与原题库共用。
+const materialExamples = {
+  "advice-1": {
+    kind: "example", label: "例子",
+    topic: "传统文化传承", english: "the preservation of traditional Chinese culture",
+    cards: [["传统文化体验活动"], ["传统文化传承讲座"], ["数字文物摄影展"]]
+  },
+  "advice-3": {
+    kind: "action", label: "行动",
+    topic: "提高学习效率", english: "effective learning",
+    cards: [
+      ["读书分享会", "参加", "attend", "attending"],
+      ["小组讨论", "参与", "take part in", "taking part in"],
+      ["线上学习平台", "利用", "make use of", "making use of"]
+    ]
+  },
+  "advice-5": {
+    kind: "resource", label: "资源", topic: "职业发展",
+    cards: [
+      ["就业信息服务平台", "搭建", "build"],
+      ["职业技能培训", "提供", "offer"],
+      ["专业实习", "安排", "arrange"]
+    ]
+  }
+};
