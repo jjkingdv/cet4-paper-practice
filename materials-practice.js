@@ -29,6 +29,45 @@ let currentMaterial = materials[0];
 let materialMode = "read";
 let materialChunk = 0;
 let materialRevealed = false;
+let activityDraw;
+
+const activityBank = new Map(sourceBank.map((item) => [item.prompt, item]));
+const activityPools = activityTopics.map(([topic, english, prompts]) => ({
+  topic, english, cards: [...new Set(prompts)].map((prompt) => activityBank.get(prompt)).filter(Boolean)
+})).filter((pool) => pool.cards.length >= 3);
+
+// 先抽主题，再在该主题下不放回抽三条；重抽时避开当前主题。
+function drawActivities(previous) {
+  const options = activityPools.length > 1 ? activityPools.filter((pool) => pool !== previous?.pool) : activityPools;
+  const pool = options[Math.floor(Math.random() * options.length)];
+  if (!pool) return null;
+  const choices = [...pool.cards];
+  const cards = Array.from({ length: 3 }, () =>
+    choices.splice(Math.floor(Math.random() * choices.length), 1)[0]
+  );
+  return { pool, cards };
+}
+
+function activeActivity() {
+  if (currentMaterial.id !== "advice-1" || materialMode !== "whole") return null;
+  activityDraw ??= drawActivities();
+  return activityDraw;
+}
+
+// 只在整段答案中填入当前抽到的主题和例子，阅读与分块保留模板。
+function applyActivities(item, activity) {
+  const answers = activity.cards.map((card) => card.answers[0]);
+  const names = activity.cards.map((card) => card.prompt);
+  const template = item.chunks.join(" ");
+  if (item.original) {
+    const english = answers.reduce((line, answer, index) => line.replace(`例子${index + 1}`, answer),
+      template.replace("主题名词", activity.pool.english));
+    return [english, `高校应多开设与${activity.pool.topic}相关的课程，并组织${names.join("、")}等多样化活动，帮助学生更清楚、更深入地理解这个话题。`];
+  }
+  const english = answers.reduce((line, answer, index) => line.replace(`[example ${index + 1}]`, answer),
+    template.replace("teach [topic]", `help students learn about ${activity.pool.english}`));
+  return [english, `高校可以通过课堂和实践活动帮助学生了解${activity.pool.topic}。例如，可以安排${names.join("、")}。这样，学生就有机会通过实践加深理解。`];
+}
 
 function materialChoices() {
   return materials.filter((item) => !materialCategory.value || item.category === materialCategory.value);
@@ -62,10 +101,11 @@ function renderMaterial(focus = "") {
   const item = currentMaterial;
   const read = materialMode === "read";
   const chunk = materialMode === "chunk";
+  const activity = activeActivity();
   materialRevealed = false;
   for (const button of materialModes) button.setAttribute("aria-pressed", String(button.dataset.materialMode === materialMode));
   text("material-type", item.category);
-  text("material-source", `${item.original ? "讲义原文" : "四级写作改写"} · 对应讲义第 ${item.page} 页`);
+  text("material-source", `${item.original ? (activity ? "讲义句型套用" : "讲义原文") : "四级写作改写"} · 对应讲义第 ${item.page} 页`);
   text("material-title", item.title);
   text("material-topic", `换一个题目：${item.topic}`);
   text("material-use", read ? item.use : "");
@@ -92,7 +132,21 @@ function renderMaterial(focus = "") {
   }
   const content = byId("material-content");
   content.replaceChildren(instruction, list);
-  if (item.chunks.some((line) => /\[.+?\]|主题名词|行为|例子\d/.test(line))) {
+  show("material-scenario-actions", Boolean(activity));
+  if (activity) {
+    const topic = document.createElement("p");
+    topic.id = "material-scenario-topic";
+    topic.textContent = `本题主题：${activity.pool.topic}`;
+    const examples = document.createElement("ol");
+    examples.id = "material-scenario-examples";
+    examples.setAttribute("aria-label", "本题的三个例子");
+    for (const card of activity.cards) {
+      const example = document.createElement("li");
+      example.textContent = card.prompt;
+      examples.append(example);
+    }
+    content.append(topic, examples);
+  } else if (item.chunks.some((line) => /\[.+?\]|主题名词|行为|例子\d/.test(line))) {
     const note = document.createElement("p");
     note.className = "muted";
     note.textContent = "这是可套用模板。占位处写成当前作文题目的具体话题、行为或例子。";
@@ -121,9 +175,14 @@ function revealMaterial() {
   materialRevealed = true;
   const item = currentMaterial;
   const chunk = materialMode === "chunk";
-  text("material-english", chunk ? item.chunks[materialChunk] : item.chunks.join(" "));
-  text("material-translation", chunk ? item.hints[materialChunk] : item.translation);
-  show("material-translation", chunk || Boolean(item.translation));
+  const activity = activeActivity();
+  const [english, translation] = activity ? applyActivities(item, activity) : [
+    chunk ? item.chunks[materialChunk] : item.chunks.join(" "),
+    chunk ? item.hints[materialChunk] : item.translation
+  ];
+  text("material-english", english);
+  text("material-translation", translation);
+  show("material-translation", Boolean(translation));
   show("material-answer", true);
   show("material-hint", false);
   show("material-reveal-actions", false);
@@ -178,6 +237,11 @@ byId("material-show-hint").onclick = () => {
   show("material-hint", true);
 };
 byId("material-reveal").onclick = revealMaterial;
+byId("material-reroll").onclick = () => {
+  if (!activeActivity()) return;
+  activityDraw = drawActivities(activityDraw);
+  startMaterial(currentMaterial, "whole", "material-reroll");
+};
 byId("material-next-chunk").onclick = () => {
   if (materialChunk + 1 === currentMaterial.chunks.length) startMaterial(currentMaterial, "whole", "material-title");
   else {
