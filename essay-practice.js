@@ -41,7 +41,7 @@ function hideEssayAnswer() {
 function showEssayAnswer() {
   const item = currentEssay();
   const words = item.paragraphs.map(([, , english]) => english).join(" ").trim().split(/\s+/).length;
-  text("essay-words", `练习范文 · 正文约 ${words} 词 · ${item.paragraphs.length} 段`);
+  text("essay-words", `讲义英文与中文译文 · 正文约 ${words} 词 · ${item.paragraphs.length} 段`);
   const blocks = item.paragraphs.map(([label, , english, chinese]) => {
     const block = document.createElement("details");
     block.className = "essay-paragraph";

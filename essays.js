@@ -1,63 +1,54 @@
-// 公开版用改述题干；范文和译文用于纸笔练习，不是官方答案。
+// 公开版题干使用改述；英文范文及中文译文均按讲义原段落录入。
 const essayBank = [
   {
     id: "campus", title: "让校园生活更便利", page: 3, type: "提建议",
     prompt: "Your university wants ideas for improving students' everyday life on campus. Write a proposal with specific suggestions and explain how students would benefit from them.",
     task: "给学校写一份建议，说明怎样让校园生活更便利。提出具体措施，并说明这些措施能解决什么问题。",
-    structure: "指出麻烦 → 提出两条建议并解释好处 → 征集反馈",
+    structure: "校园便利的重要性 → 三条措施 → 减轻压力、改善校园生活",
     paragraphs: [
-      ["开头：指出问题", "学生浪费时间切换平台、排队。提出用两个小改动改善校园生活。",
-        "Students often waste time switching between campus websites or waiting in line for simple services. To make campus life easier, I suggest two changes that would save students time and effort.",
-        "学生常常在切换校园网站或排队办理简单事务上浪费时间。为了让校园生活更便利，我建议做两项改进，帮助学生节省时间和精力。"],
-      ["建议一：整合线上服务", "把查课程安排和预约自习室放在同一个平台。学生查一次就能办好。",
-        "First, the university could put common services on a single online platform. For example, students could check their class schedules and book study rooms in the same place. They would no longer have to search several websites for basic information.",
-        "首先，学校可以把常用服务整合到一个线上平台。比如，学生能在同一个平台查看课程安排并预约自习室，不再需要到好几个网站上查找基本信息。"],
-      ["建议二：完善校园一卡通", "一卡通可用于食堂和图书馆；手机能查余额、挂失；说清为什么更方便。",
-        "Second, the university could improve its campus card system. Students should be able to use the same card at the dining hall and the library. They could also check their balance or report a lost card on their phones.",
-        "其次，学校可以完善校园一卡通系统。学生应该可以在食堂和图书馆使用同一张卡，也可以在手机上查询余额或挂失。"],
-      ["结尾：听反馈再推广", "先做简短问卷，确认调整解决的确实是学生每天遇到的问题。",
-        "Before making these changes, the university should ask students about their main difficulties through a short survey. This would help it focus on problems that students actually face.",
-        "在实施这些改进前，学校应通过简短的问卷了解学生遇到的主要困难，这样就能把精力放在学生真正面对的问题上。"]
+      ["开头：说明为什么重要", "校园生活更便利有利于学业和身心健康，因此需要采取措施。",
+        "It is true that making students' campus life easier is essential to their academic development and well-being. Therefore, there are some effective steps that should be adopted.",
+        "确实，让学生的校园生活更轻松对其学业发展与身心健康至关重要。因此，应采取一些有效措施来实现这一目标。"],
+      ["正文：三条具体建议", "先完善设施和平台（线上选课、一卡通）；再增设心理健康课程并组织活动；最后请优秀学生分享学习和生活经验。",
+        "First, universities could cooperate with clubs and departments to improve related facilities and build useful platforms, including online course selection systems and campus all-in-one card systems. Second, universities should offer more courses related to mental health education and organize diverse activities, such as sports events and campus art festivals, which can help students maintain physical and mental health. Third, universities can invite outstanding students to share their experience and provide useful guidance on efficient learning and daily trouble solving.",
+        "首先，高校可联合社团与各院系完善相关设施，搭建实用平台，包括线上选课系统与校园一卡通系统。其次，高校应开设更多心理健康教育相关课程，开展丰富多彩的活动，如体育赛事与校园文化艺术节，帮助学生保持身心健康。第三，高校可邀请优秀学生分享经验，围绕高效学习与日常问题解决提供实用指导。"],
+      ["结尾：总结措施的好处", "措施落实后，学生能减轻压力，享有更舒适、更有意义的校园生活。",
+        "In conclusion, if these measures are carried out effectively, this goal will be better achieved. Students will not only relieve their daily pressure, but also enjoy a more comfortable and meaningful campus life.",
+        "总而言之，若这些措施得到有效落实，就能更好地实现这一目标。学生不仅能缓解日常压力，还能享有更舒适、更有意义的校园生活。"]
     ]
   },
   {
     id: "research", title: "大学生是否都应参与科研", page: 5, type: "表态论证",
     prompt: "A university is considering a rule that every student must take part in at least one research project. Give your view on whether the rule is necessary and how practical it would be to carry out.",
     task: "回应「大学生至少参加一个科研项目」的建议。既要说明统一要求有没有必要，也要说明学校能不能做到、怎样做到。",
-    structure: "有条件地支持 → 为什么不能只靠自愿 → 分组做小项目 → 人人体验",
+    structure: "引出争议、有条件支持 → 学习与就业好处、实施困难 → 提出落实办法",
     paragraphs: [
-      ["开头：有条件地支持", "支持每人参加一次，但不要求每个人都进行复杂实验。",
-        "I support the idea that every university student should take part in at least one research project. However, this does not mean that every student has to carry out a complex experiment.",
-        "我支持每位大学生至少参加一个科研项目的想法。不过，这并不意味着每个人都必须开展复杂的实验。"],
-      ["必要性：不只说科研有用", "科研能练习收集证据、得出结论；如果全凭自愿，没经验的学生可能一直不敢尝试。",
-        "Research teaches students how to ask clear questions, collect evidence and draw conclusions. If participation is entirely voluntary, students with little research experience may never give it a try. A basic requirement would give them a reason to take the first step.",
-        "科研教会学生怎样提出明确的问题、收集证据并得出结论。如果完全自愿，缺乏科研经验的学生可能一直不会去尝试。基本的参与要求能促使他们迈出第一步。"],
-      ["可行性：遇到困难怎么办", "单独做实验容易给导师和设备带来压力。改成小组问卷，每个人有任务，不需要贵重设备。",
-        "Since teachers and equipment are limited, universities could let students work in small groups. For example, a group could survey how classmates use online learning platforms. Each member could take responsibility for a task, such as designing questions or analysing the results.",
-        "由于师资和设备有限，学校可以让学生分组开展项目。例如，一个小组可以调查同学如何使用线上学习平台。每个成员负责一项任务，比如设计问题或分析结果。"],
-      ["结尾：回到要求本身", "人人有科研体验，项目难度和形式可以灵活。",
-        "In short, the requirement is worthwhile if universities keep the projects manageable. The goal is to let everyone experience research, not to make everyone a professional researcher.",
-        "总之，只要学校让项目的难度和规模在学生能力范围内，这项要求就值得实施。目标是让每个人都体验科研，而不是让每个人都成为专业研究人员。"]
+      ["开头：引出争议与立场", "有人看重科研的好处，有人担心问题。作者支持推行，但主张加上合理限制。",
+        "Currently, there is a heated debate over whether university students should be required to participate in at least one research project. Opinions are divided on this issue, with some praising its advantages and others worrying about its hidden problems. From my perspective, a balanced approach is preferable, where this requirement is permitted with certain reasonable limitations.",
+        "目前，关于是否应要求大学生至少参与一项科研项目，人们展开了激烈的争论。对此各方观点不一，有人称赞其益处，也有人担忧其潜在问题。在我看来，更可取的是采取折中方案，允许推行这一要求，但需辅以合理的限制条件。"],
+      ["正文：先好处，再困难", "科研能练批判性思维和独立分析能力，也能提升就业竞争力；但资源有限、指导质量不一可能影响落实。",
+        "There is no doubt that this practice brings a multitude of positive outcomes. By taking part in research projects, college students can cultivate their critical thinking, develop their capacity to analyze problems independently, and improve their comprehensive abilities. In addition, such experiences develop practical research skills that employers highly value, which can greatly enhance students' employability. However, we cannot ignore that limited resources and uneven guidance quality may undermine effective implementation.",
+        "毫无疑问，这一做法会带来诸多积极影响。通过参与科研项目，大学生能够培养批判性思维，锻炼独立分析问题的能力，提升自身综合素养。此外，这类经历能练就雇主高度看重的实用科研技能，可大幅提升学生的就业竞争力。但我们不能忽视，资源有限、指导质量不均可能会削弱实施效果。"],
+      ["结尾：提出办法", "与科研机构合作，增加实践机会；请优秀学生分享经验，发挥科研价值。",
+        "To maximize the benefits and minimize the challenges, universities are supposed to cooperate with research institutions to provide more practical opportunities and invite outstanding students to share their experience. It is through these combined efforts that the full potential of research projects can be realized.",
+        "为了实现效益最大化、挑战最小化，高校应当与科研机构展开合作，提供更多实践机会，并邀请优秀学生分享经验。唯有通过这些共同努力，才能充分释放科研项目的全部潜力。"]
     ]
   },
   {
     id: "robots", title: "未来机器人如何服务校园", page: 7, type: "展望应用",
     prompt: "Your campus newspaper is preparing a feature on how robots might be used at universities in the future. Write an article for it, describing possible uses and explaining why they would be helpful.",
     task: "为校报写一篇投稿，说明未来机器人能在校园里做什么。写出具体场景和任务，再解释其好处。",
-    structure: "提出两个场景 → 辅助学习 → 支持校园服务 → 人仍负责重要决定",
+    structure: "展望校园应用 → 辅助学习和校园管理 → 提高效率、改善生活",
     paragraphs: [
-      ["开头：点明两个应用场景", "机器人不只是展示新技术，还能辅助学习、改善校园服务。",
-        "In the future, robots could become useful helpers on campus. Rather than simply showing off new technology, universities could use them to support learning and improve daily campus services.",
-        "未来，机器人可以成为校园里的得力助手。高校可以用它们辅助学习、改善日常校园服务，而不只是展示新技术。"],
-      ["场景一：辅助学习", "机器人帮学生找在线课程和练习题；需要复习时，可以按自己的节奏学。",
-        "First, robots could act as learning assistants. They can help students gain access to a wider range of learning materials, such as online courses and practice questions, so that students can study at their own pace.",
-        "首先，机器人可以充当学习助手。它们能帮助学生获得更多学习资料，比如在线课程和练习题，让学生按自己的节奏学习。"],
-      ["场景二：校园服务", "打扫公共区域、指引垃圾分类。减轻重复劳动，让工作人员处理更需要人工判断的事。",
-        "Second, robots could take on routine campus tasks. For example, they could clean public areas or show students which bins to use for different types of waste. This would save staff time and let them focus on work that needs human judgment.",
-        "其次，机器人可以承担校内日常事务。例如，它们可以打扫公共区域，或者告诉学生不同种类的垃圾该投进哪个垃圾桶。这能为工作人员节省时间，让他们专注于需要人工判断的工作。"],
-      ["结尾：总结好处与边界", "机器人能让校园运转更顺畅，重要决定仍由人负责。",
-        "Overall, robots could make campus life easier if they are given clear tasks. They should support teachers and staff, while people remain responsible for important decisions.",
-        "总的来说，如果给机器人明确的任务，它们就能让校园生活更便利。机器人应协助教师和工作人员，重要决定仍由人负责。"]
+      ["开头：展望校园应用", "机器人未来会用于校园的多个领域，并带来好处。",
+        "It is true that future applications of robots on campus are essential to university development. In the near future, robots will be widely applied in various fields of campus life and bring a multitude of positive outcomes.",
+        "确实，机器人在校园的未来应用对大学发展至关重要。在不久的将来，机器人将被广泛应用于校园生活的各个领域，并带来许多积极成果。"],
+      ["正文：两个应用场景", "学习：找在线课程、学术数据库和多媒体课程，方便自主学习；管理：负责校园清洁、垃圾分类宣传，为师生节省时间和精力。",
+        "Firstly, in terms of academic study, robots will act as intelligent learning assistants. They can help students gain access to a wider range of learning materials, such as online courses, academic databases and multimedia lessons, allowing flexible and self-paced study. Secondly, for daily campus management, robots will take charge of routine work, including campus clean-up campaigns and garbage sorting publicity campaigns, saving valuable time and effort for students and teachers.",
+        "首先，在学业学习方面，机器人将充当智能学习助手。它们可以帮助学生获取更广泛的学习资料，如在线课程、学术数据库和多媒体课程，从而实现灵活、自主节奏的学习。其次，在日常校园管理方面，机器人将负责常规工作，包括校园清洁活动和垃圾分类宣传活动，为学生和教师节省宝贵的时间和精力。"],
+      ["结尾：总结校园收益", "机器人能提高校园运行效率，让学生的校园生活更便捷、更舒适。",
+        "In conclusion, the application of robots on campus is a promising trend. It will not only considerably improve campus operational efficiency, but also help students enjoy a more convenient and comfortable campus life.",
+        "总之，机器人在校园的应用是一个前景广阔的趋势。它不仅能大幅提高校园运营效率，还能帮助学生享受更便捷、更舒适的校园生活。"]
     ]
   }
 ];
