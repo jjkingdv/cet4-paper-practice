@@ -252,7 +252,7 @@ function grade(mark) {
 }
 
 function goTo(view) {
-  for (const [section, nav] of [["practice", "nav-practice"], ["materials", "nav-materials"], ["library", "nav-bank"]]) {
+  for (const [section, nav] of [["practice", "nav-practice"], ["materials", "nav-materials"], ["essay", "nav-essay"], ["library", "nav-bank"]]) {
     show(section, section === view);
     if (section === view) byId(nav).setAttribute("aria-current", "page");
     else byId(nav).removeAttribute("aria-current");

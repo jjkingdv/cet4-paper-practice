@@ -27,7 +27,7 @@ h1:focus, h2:focus, #answer:focus, #hint-text:focus { outline: none; }
 .top-inner { min-height: 70px; justify-content: space-between; gap: 8px; }
 .brand { gap: 10px; white-space: nowrap; }
 .brand-mark { width: 40px; height: 40px; color: #fff; background: var(--blue); border-radius: 12px; }
-nav { gap: 5px; }
+nav { gap: 5px; flex-wrap: wrap; }
 nav button { padding: 7px 14px; border: 0; color: var(--muted); background: transparent; border-radius: 8px; font-size: .9375rem; }
 nav button:hover, nav button[aria-current] { color: #1e49aa; background: #eaf0ff; }
 .heading { padding-block: 36px 24px; }
@@ -124,6 +124,23 @@ footer { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 5p
 #material-application summary { cursor: pointer; color: var(--blue); font-weight: 700; }
 #material-application p { margin-top: 6px; }
 .material-picker-actions { margin-top: 12px; }
+
+/* 作文题干、构思和范文分层展示，便于逐段收起后回忆。 */
+.essay-card { max-width: 870px; overflow-wrap: anywhere; }
+.essay-picker { max-width: 320px; margin-bottom: 22px; }
+.essay-picker label { margin-top: 0; }
+.essay-card h2 { margin-top: 12px; }
+.essay-prompt p + p { margin-top: 7px; }
+#essay-outline { margin-block: 16px; }
+#essay-outline p, #essay-outline ol { margin-block: 8px; }
+#essay-outline ol { padding-inline-start: 24px; }
+#essay-outline li + li { margin-top: 6px; }
+.essay-card summary { cursor: pointer; color: var(--blue); font-weight: 700; }
+#essay-answer { border-top: 1px solid var(--line); margin-top: 23px; padding-top: 16px; }
+.essay-answer-header { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px; margin-bottom: 6px; }
+.essay-answer-header h3 { margin: 0; }
+.essay-paragraph { border: 1px solid var(--line); border-radius: 10px; margin-top: 10px; padding: 10px 14px; }
+.essay-paragraph p { margin-top: 7px; line-height: 1.65; }
 
 /* 窄屏把练习放在设置前面，把添加入口放在题库清单前面。 */
 @media (max-width: 780px) {
