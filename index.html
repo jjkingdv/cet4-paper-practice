@@ -5,14 +5,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="看中文、纸上默写、翻答案自评的四级写作练习。">
   <title>四级默写本</title>
-  <link rel="stylesheet" href="style.css?v=essay1">
+  <link rel="stylesheet" href="style.css?v=essay-lines1">
   <script defer src="bank.js"></script>
   <script defer src="examples.js"></script>
   <script defer src="app.js?v=essay1"></script>
   <script defer src="materials.js?v=fixed-examples1"></script>
   <script defer src="materials-practice.js?v=fixed-examples1"></script>
-  <script defer src="essays.js?v=essay-pdf1"></script>
-  <script defer src="essay-practice.js?v=essay-pdf1"></script>
+  <script defer src="essays.js?v=essay-lines1"></script>
+  <script defer src="essay-practice.js?v=essay-lines1"></script>
 </head>
 <body>
   <header class="topbar">
@@ -265,6 +265,7 @@
         </details>
         <div class="actions">
           <button id="essay-reveal" class="primary" type="button" aria-controls="essay-answer" aria-expanded="false">翻开完整范文</button>
+          <button id="essay-translate" class="secondary" type="button" aria-controls="essay-answer" aria-expanded="false">先看中文直译</button>
         </div>
         <section id="essay-answer" aria-labelledby="essay-answer-title" hidden>
           <div class="essay-answer-header">
@@ -276,7 +277,7 @@
               <button id="essay-collapse" class="secondary" type="button">收起全部段落</button>
             </div>
           </div>
-          <p class="muted">可以收起任一段，只看段落标题，在纸上回忆后再展开核对。</p>
+          <p id="essay-answer-help" class="muted">可以收起任一段，只看段落标题，在纸上回忆后再展开核对。</p>
           <div id="essay-paragraphs"></div>
         </section>
       </article>

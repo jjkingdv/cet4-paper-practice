@@ -141,6 +141,9 @@ footer { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 5p
 .essay-answer-header h3 { margin: 0; }
 .essay-paragraph { border: 1px solid var(--line); border-radius: 10px; margin-top: 10px; padding: 10px 14px; }
 .essay-paragraph p { margin-top: 7px; line-height: 1.65; }
+.essay-translation { white-space: pre-line; }
+.essay-english-actions { margin-top: 8px; }
+.essay-paragraph u { text-underline-offset: .13em; }
 
 /* 窄屏把练习放在设置前面，把添加入口放在题库清单前面。 */
 @media (max-width: 780px) {
